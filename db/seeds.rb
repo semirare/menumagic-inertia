@@ -1,9 +1,58 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# frozen_string_literal: true
+
+# {type: weight: 0, volume: 1, other: 2 }
+IngredientUnit.create([ { name: "mL", type: 1, base_conversion: 1 },
+                       { name: "L", type: 1, base_conversion: 1000 },
+                       { name: "tsp", type: 1, base_conversion: 4.929 },
+                       { name: "tbsp", type: 1, base_conversion: 14.787 },
+                       { name: "fl. oz", type: 1, base_conversion: 29.574 },
+                       { name: "cup", type: 1, base_conversion: 240 },
+                       { name: "pt", type: 1, base_conversion: 473.176 },
+                       { name: "qt", type: 1, base_conversion: 946.353 },
+                       { name: "gal", type: 1, base_conversion: 3785.41 },
+                       { name: "mg", type: 0, base_conversion: 1 },
+                       { name: "g", type: 0, base_conversion: 1000 },
+                       { name: "kg", type: 0, base_conversion: 1_000_000 },
+                       { name: "oz", type: 0, base_conversion: 28_349.5 },
+                       { name: "lb", type: 0, base_conversion: 453_592 },
+                       { name: "can", type: 2, base_conversion: 1 } ])
+
+Recipe.create([ { name: "BLT" },
+               { name: "Sausage Rice" },
+               { name: "E+K Pasta" },
+               { name: "Butter Chicken" },
+               { name: "Subs" },
+               { name: "Creamy Herb Chicken" },
+               { name: "Phiily Cheesesteak" },
+               { name: "Jalapeno Chicken" },
+               { name: "Parmesan Chicken Rice" },
+               { name: "Korean Chicken" },
+               { name: "Tomato Feta Pasta" },
+               { name: "Korean Sesame Tacos" },
+               { name: "Burgers" },
+               { name: "Pecan Chicken" },
+               { name: "Buffalo Honey Chicken" },
+               { name: "Bibimbap" },
+               { name: "Sundried Tomato Pasta" },
+               { name: "Pizza" },
+               { name: "Mac & Cheese" },
+               { name: "Peanut Chicken Noodles" },
+               { name: "Chicken Enchilada" },
+               { name: "Chicken Fried Rice" },
+               { name: "Okonomiyaki" },
+               { name: "Taco Spaghetti" },
+               { name: "Goulash" },
+               { name: "Chicken Fingers" },
+               { name: "Chicken Parmesan" },
+               { name: "Coconut Lime Chicken" },
+               { name: "Egg Roll Bowl" },
+               { name: "Crunchwrap Supreme" },
+               { name: "Pasta & Meatballs" },
+               { name: "Summer Salad" },
+               { name: "Grilled Cheese & Tomato Soup" },
+               { name: "Chicken Katsu" },
+               { name: "Chicken Casesar Salad" },
+               { name: "Greek Chicken Rice Bowl" },
+               { name: "Greek Sheet Pan Chicken" },
+               { name: "Honey Mustard Chicken" }
+              ])
