@@ -1,5 +1,5 @@
 <template>
-  <Head title="Posts" />
+  <Head title="Recipes" />
 
   <div className="mx-auto md:w-2/3 w-full px-8 pt-8">
     <p
@@ -10,24 +10,24 @@
     </p>
 
     <div class="flex justify-between items-center">
-      <h1 class="font-bold text-4xl">Posts</h1>
+      <h1 class="font-bold text-4xl">Recipes</h1>
       <Link
-        href="/posts/new"
+        href="/recipes/new"
         class="rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
       >
-        New post
+        New recipe
       </Link>
     </div>
 
     <div class="min-w-full">
-      <template v-for="post in posts" :key="post.id">
-        <Post :post="post" />
+      <template v-for="recipe in recipes" :key="recipe.id">
+        <Recipe :recipe="recipe" />
         <p>
           <Link
-            :href="`/posts/${post.id}`"
+            :href="`/recipes/${recipe.id}/edit`"
             class="ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
           >
-            Show this post
+            Edit this recipe
           </Link>
         </p>
       </template>
@@ -37,7 +37,7 @@
 
 <script setup>
 import { Head, Link } from '@inertiajs/vue3'
-import Post from './Post.vue'
+import Recipe from './Recipe.vue'
 
-const { posts, flash } = defineProps(['posts', 'flash'])
+const { recipes, flash } = defineProps(['recipes', 'flash'])
 </script>

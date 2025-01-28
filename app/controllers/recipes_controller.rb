@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[ show edit update destroy ]
+  before_action :set_recipe, only: %i[ edit update destroy ]
 
   inertia_share flash: -> { flash.to_hash }
 
@@ -10,13 +10,6 @@ class RecipesController < ApplicationController
       recipes: @recipes.map do |recipe|
         serialize_recipe(recipe)
       end
-    }
-  end
-
-  # GET /recipes/1
-  def show
-    render inertia: "Recipe/Show", props: {
-      recipe: serialize_recipe(@recipe)
     }
   end
 
@@ -69,10 +62,12 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :body, :published_at)
+      params.require(:recipe).permit(:name)
     end
 
     def serialize_recipe(recipe)
-      Recipe.as_json
+      recipe.as_json(only: [
+        :id, :name
+      ])
     end
 end
