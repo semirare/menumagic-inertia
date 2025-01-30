@@ -42,7 +42,7 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   def update
     if @recipe.update(recipe_params)
-      redirect_to @recipe, notice: "recipe was successfully updated."
+      redirect_to edit_recipe_url(@recipe), flash: { notice: "#{@recipe.name} was successfully updated." }
     else
       redirect_to edit_recipe_url(@recipe), inertia: { errors: @recipe.errors }
     end

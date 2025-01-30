@@ -1,3 +1,15 @@
+<script setup>
+import { Head, Link } from "@inertiajs/vue3";
+import Form from "./Form.vue";
+
+const { recipe } = defineProps(["recipe"]);
+
+const handleSubmit = (form) => {
+  form.transform((data) => ({ recipe: data }));
+  form.patch(`/recipes/${recipe.id}`);
+};
+</script>
+
 <template>
   <Head title="Editing recipe" />
 
@@ -17,15 +29,3 @@
     </Link>
   </div>
 </template>
-
-<script setup>
-import { Head, Link } from '@inertiajs/vue3'
-import Form from './Form.vue'
-
-const { recipe } = defineProps(['recipe'])
-
-const handleSubmit = (form) => {
-  form.transform((data) => ({ recipe: data }))
-  form.patch(`/recipes/${recipe.id}`)
-}
-</script>
